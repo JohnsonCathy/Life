@@ -5,19 +5,14 @@ import java.awt.event.KeyListener;
 public class GUI extends JFrame {
     public static void main (String[] args) {
         JFrame board = new JFrame("Game of Life");
-        /*
-        JLayeredPane layeredPane = new JLayeredPane();
-        layeredPane.add(new Board(),JLayeredPane.DEFAULT_LAYER);
-        layeredPane.add(new PlayerPanel(),JLayeredPane.PALETTE_LAYER);
-        board.add(layeredPane);
-         */
-        board.add(new Board());
+        String start = JOptionPane.showInputDialog(board, "Would you like to go to college or start a career?");
+        Board gameBoard = new Board(start);
+        ActionPanel display = new ActionPanel();
+        board.add(gameBoard);
+        board.add(display);
         board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        board.setLayout(new GridLayout(1,2));
         board.pack();
-        //layeredPane.setVisible(true);
         board.setVisible(true);
-
-        /*PlayerPanel p = new PlayerPanel();
-        * board.add(p);*/
     }
 }
