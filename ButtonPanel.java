@@ -13,7 +13,7 @@ public class ButtonPanel extends JPanel {
     private JButton houses = new JButton("Houses");
 
     private final Random rand = new Random();
-    int upper = 5; //max number the spinner can generate
+    int upper = 6; //max number the spinner can generate
     int moves;
 
     public ButtonPanel() {
@@ -36,8 +36,9 @@ public class ButtonPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource().equals(spinButton)) {
-                moves = rand.nextInt(upper);
+                moves = rand.nextInt(upper - 1) + 1; // +1 makes it so that player can not spin a value of 0
                 Board.movement(moves);
+                JOptionPane.showMessageDialog(null, "You spun a: " + moves);
             }
         }
     };
