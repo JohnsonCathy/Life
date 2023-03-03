@@ -6,61 +6,57 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class Board extends JPanel {
-    static JTextField[][] jLabelBoard = new JTextField[6][6];
-    private ImageIcon P1Icon = new ImageIcon("src/icons/black-car.jpg");
-    private ImageIcon P2Icon = new ImageIcon("src/icons/white-car.png"); //not currently used, will change in 2nd release
-
+    static JTextArea[][] jLabelBoard = new JTextArea[6][6];
+    
     /**
      * default constructor, sets board to size 6
      */
     public Board(String start) {
-        JPanel mainPanel = new JPanel();
-
         for (int row = 0; row < 6; row ++) {
             for (int col = 0; col < 6; col ++) {
                 this.setLayout(new GridLayout(6, 6));
                 if(row==0 && col==0){
-                    jLabelBoard[row][col] = new JTextField("Start");
+                    jLabelBoard[row][col] = new JTextArea("Start");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color(211,211,211));
                 }
                 else if(start.equals("college") && (row == 1 && col ==0)){
-                    jLabelBoard[row][col] = new JTextField("Player");
+                    jLabelBoard[row][col] = new JTextArea(" Life! \n Player");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color (255,165,0));
                 }
                 else if(start.equals("career") && (row == 0 && col ==1)){
-                    jLabelBoard[row][col] = new JTextField("Pay \n Player");
+                    jLabelBoard[row][col] = new JTextArea("PayDay\nPlayer");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color (0,255,0));
                 }
                 else if(row==5&&col==5){
-                    jLabelBoard[row][col] = new JTextField("End");
+                    jLabelBoard[row][col] = new JTextArea("End");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color(211,211,211));
                 }
                 else if(row==5 && col==0){
-                    jLabelBoard[row][col] = new JTextField("Job");
+                    jLabelBoard[row][col] = new JTextArea("GetJob");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color(255,0,0));
                 }
                 else if (row ==2 && col==2){
-                    jLabelBoard[row][col] = new JTextField("Marry");
+                    jLabelBoard[row][col] = new JTextArea("Marry!");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color(255,0,0));
                 }
                 else if(row ==3&&col==3){
-                    jLabelBoard[row][col] = new JTextField("House");
+                    jLabelBoard[row][col] = new JTextArea("House!");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color(255,0,0));
                 }
                 else if((row==0 && col==1)||(row==5 &&col==1)||(row==1&col==3)||(row==4&&col==4)||(row==2&&col==5)){
-                    jLabelBoard[row][col] = new JTextField("Pay");
+                    jLabelBoard[row][col] = new JTextArea("PayDay");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color(0,255,0));
                 }
                 else {
-                    jLabelBoard[row][col] = new JTextField();
+                    jLabelBoard[row][col] = new JTextArea(" Life!");
                     jLabelBoard[row][col].setBackground(new Color (255,165,0));
                 }
                 jLabelBoard[row][col].setEditable(false);
@@ -72,7 +68,6 @@ public class Board extends JPanel {
         }
     }
 
-
     public static void movement(int moves) {
         String str = "";
         String newStr ="";
@@ -83,17 +78,6 @@ public class Board extends JPanel {
                         jLabelBoard[row][col].setText("");
                     }
                     else { //if tile says something + player
-                        /*
-                        int start = 0;
-                        int end = 0;
-                        try {
-                            start = jLabelBoard[row][col].getLineEndOffset(0);
-                            end = jLabelBoard[row][col].getLineEndOffset(1);
-                        } catch (BadLocationException ex) {
-                            System.out.println(ex);
-                        }
-                        jLabelBoard[row][col].replaceRange("", start, end);
-                         */
                         str = jLabelBoard[row][col].getText().substring(0, 6);
                         jLabelBoard[row][col].setText(str); //revert the tile back to what it said before
                     }
