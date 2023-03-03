@@ -6,28 +6,9 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class Board extends JPanel {
-    private Random rand = new Random();
-    int upper = 5; //max number the spinner can generate
-    int moves;
-    private final JButton spinButton = new JButton("Spin");
     static JTextField[][] jLabelBoard = new JTextField[6][6];
-    /*private JButton careers;
-    private JButton salaries;
-    private JButton houses;
-    private JButton stocks;*/
     private ImageIcon P1Icon = new ImageIcon("src/icons/black-car.jpg");
     private ImageIcon P2Icon = new ImageIcon("src/icons/white-car.png"); //not currently used, will change in 2nd release
-
-
-    private ActionListener listener = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if(e.getSource().equals(spinButton)){
-                moves = rand.nextInt(upper);
-                movement(moves);
-            }
-        }
-    };
 
     /**
      * default constructor, sets board to size 6
@@ -89,30 +70,47 @@ public class Board extends JPanel {
                 this.add(jLabelBoard[row][col]);
             }
         }
-        //spinButton.addActionListener(listener);
-        //this.add(spinButton);
     }
 
 
     public static void movement(int moves) {
         String str = "";
         String newStr ="";
-        for (int row = 0; row < 6; row++) { //x coordinates of board
-            for (int col = 0; col < 6; col++) { //y coordinates of board
-                if (jLabelBoard[row][col].getText().contains("Player")) {
-                    str = jLabelBoard[row][col].getText().substring(0, 6);
-                    jLabelBoard[row][col].setText("");
+        for (int row = 0; row < 6; row++) {
+            for (int col = 0; col < 6; col++) {
+                if (jLabelBoard[row][col].getText().contains("Player")) { //if the player is in this tile
+                    if(jLabelBoard[row][col].getText().equals("Player")){ // if the tile *only* says player
+                        jLabelBoard[row][col].setText("");
+                    }
+                    else { //if tile says something + player
+                        /*
+                        int start = 0;
+                        int end = 0;
+                        try {
+                            start = jLabelBoard[row][col].getLineEndOffset(0);
+                            end = jLabelBoard[row][col].getLineEndOffset(1);
+                        } catch (BadLocationException ex) {
+                            System.out.println(ex);
+                        }
+                        jLabelBoard[row][col].replaceRange("", start, end);
+                         */
+                        str = jLabelBoard[row][col].getText().substring(0, 6);
+                        jLabelBoard[row][col].setText(str); //revert the tile back to what it said before
+                    }
                     for (int i = 0; i < moves; i++)
-                        if ((col % 2 != 0 || col == 0) && row != 5)
+                        if ((col%2 != 0 || col==0) && row!=5) //if in even col or col zero and not at the turn point
                             row++;
-                        else if ((col % 2 != 0 || col == 0) && row == 5)
+                        else if ((col%2 != 0 || col == 0) && row == 5) //if in even col or col zero and at the turn point
                             col++;
-                        else if (col % 2 == 0 && row != 0)
+                        else if (col % 2 == 0 && row != 0) //if in an even col and not at turn point
                             row--;
-                        else if (col % 2 == 0 && row == 0)
+                        else if (col % 2 == 0 && row == 0) //if in an even col and at turn point
                             col++;
-                    newStr = jLabelBoard[row][col].getText().concat("Player");
-                    jLabelBoard[row][col].setText(newStr);
+                        if(col == 5 && row == 5){
+                            JOptionPane.showInputDialog("Congrats you reached the end! Where would you like to retire?");
+                        }
+                    newStr = jLabelBoard[row][col].getText().concat("\n Player");
+                    jLabelBoard[row][col].setText(newStr); //puts the player at that tile
                     break;
                 }
             }
