@@ -8,6 +8,9 @@ public class ButtonPanel extends JPanel {
     private JButton spinButton = new JButton("spin");
     private JButton endTurnButton = new JButton("End turn");
     private JButton buyStockButton = new JButton("Buy stock");
+    private JButton careers = new JButton("Careers"); //will be used in release 2
+    private JButton salaries = new JButton("Salary");
+    private JButton houses = new JButton("Houses");
 
     private final Random rand = new Random();
     int upper = 5; //max number the spinner can generate
@@ -20,7 +23,13 @@ public class ButtonPanel extends JPanel {
         spinButton.addActionListener(listener);
         this.add(buyStockButton);
         buyStockButton.addActionListener(listener);
-        setLayout(new GridLayout(1, 3));
+        this.add(careers);
+        careers.addActionListener(listener);
+        this.add(salaries);
+        salaries.addActionListener(listener);
+        this.add(houses);
+        houses.addActionListener(listener);
+        setLayout(new GridLayout(2, 3));
     }
     /* Add all the different button actions here*/
     private ActionListener listener = new ActionListener() {
