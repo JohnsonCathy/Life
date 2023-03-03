@@ -11,7 +11,7 @@ public class Board extends JPanel {
     /**
      * default constructor, sets board to size 6
      */
-    public Board(String start) {
+    public Board(int start) {
         for (int row = 0; row < 6; row ++) {
             for (int col = 0; col < 6; col ++) {
                 this.setLayout(new GridLayout(6, 6));
@@ -20,12 +20,12 @@ public class Board extends JPanel {
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color(211,211,211));
                 }
-                else if(start.equals("college") && (row == 1 && col ==0)){
+                else if(start == JOptionPane.YES_OPTION && (row == 1 && col ==0)){
                     jLabelBoard[row][col] = new JTextArea(" Life! \n Player");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color (255,165,0));
                 }
-                else if(start.equals("career") && (row == 0 && col ==1)){
+                else if(start == JOptionPane.NO_OPTION && (row == 0 && col ==1)){
                     jLabelBoard[row][col] = new JTextArea("PayDay\nPlayer");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color (0,255,0));
