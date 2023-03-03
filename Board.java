@@ -99,8 +99,8 @@ public class Board extends JPanel {
         String newStr ="";
         for (int row = 0; row < 6; row++) { //x coordinates of board
             for (int col = 0; col < 6; col++) { //y coordinates of board
-                if (jLabelBoard[row][col].getText().contains("player")) {
-                    str = jLabelBoard[row][col].getText().substring(0, 4);
+                if (jLabelBoard[row][col].getText().contains("Player")) {
+                    str = jLabelBoard[row][col].getText().substring(0, 6);
                     jLabelBoard[row][col].setText("");
                     for (int i = 0; i < moves; i++)
                         if ((col % 2 != 0 || col == 0) && row != 5)
@@ -111,7 +111,7 @@ public class Board extends JPanel {
                             row--;
                         else if (col % 2 == 0 && row == 0)
                             col++;
-                    newStr = jLabelBoard[row][col].getText().concat("player");
+                    newStr = jLabelBoard[row][col].getText().concat("Player");
                     jLabelBoard[row][col].setText(newStr);
                     break;
                 }
