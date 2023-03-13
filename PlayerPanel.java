@@ -3,54 +3,51 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class PlayerPanel extends JPanel {
+
+    private Player playerOne = new Player();
+    private Player playerTwo = new Player();
     private JLabel player1 = new JLabel("Player one profile");
     private JLabel player2 = new JLabel("Player two profile");
     private JLabel money;
     private JLabel career;
     private JLabel salary;
-    // JLabel[][] PlayerLabelBoard = new JLabel[6][6];
+    private JLabel numTurns;
+    private JLabel currentTurn;
+    private boolean whoTurn = playerOne.isCurrentPlayer();
 
     public PlayerPanel(){
         this.add(player1);
+        numTurns = new JLabel(String.valueOf(playerOne.getRounds()));
+        this.add(numTurns);
+        if (whoTurn == true) {
+            currentTurn = new JLabel("Go player one");
+        } else {
+            currentTurn = new JLabel("Go player two");
+        }
+        this.add(currentTurn);
         this.add(player2);
         this.add(new JLabel("Money: "));
-        // this.add(money);
+        money = new JLabel(String.valueOf(playerOne.getMoney()));
+        this.add(money);
         this.add(new JLabel("Money: "));
-        // this.add(money);
+        money = new JLabel(String.valueOf(playerTwo.getMoney()));
+        this.add(money);
         this.add(new JLabel("Career: "));
+        this.add(new JLabel("-void-"));
         // this.add(career);
         this.add(new JLabel("Career: "));
+        this.add(new JLabel("-void-"));
         // this.add(career);
         this.add(new JLabel("Salary: "));
+        this.add(new JLabel("-void-"));
         //  this.add(salary);
         this.add(new JLabel("Salary: "));
+        this.add(new JLabel("-void-"));
         //  this.add(salary);
 
         /*Grid size will need to be adjusted when label containing actual values are added
          * most likely will be 4,4 but im not sure yet*/
 
-        setLayout(new GridLayout(4,2));
-       /* this.setLayout(new GridLayout(6,6));
-        PlayerLabelBoard[2][2] = new JLabel("player 1");
-        PlayerLabelBoard[2][2].setOpaque(false);
-        this.add(PlayerLabelBoard[2][2]);
-       /* for (int row = 0; row < 6; row ++) {
-            for (int col = 0; col < 6; col ++) {
-                this.setLayout(new GridLayout(6, 6));*/
-                /*PlayerLabelBoard[row][col] = new JLabel("player");
-                this.add(PlayerLabelBoard[row][col]);
-                PlayerLabelBoard[row][col].setOpaque(true);
-                PlayerLabelBoard[row][col].setPreferredSize(new Dimension(75, 25));
-            }
-        }
-    }
-    /*public void paintComponent (Graphics g) {
-    *   super.paintComponent(g);
-        setForeground(Color.BLUE);
-        setForeground(new Color(0,0,0));
-        g.drawOval(25,35,25,25);
-        }
-                 */
-
+        setLayout(new GridLayout(4,4));
     }
 }
