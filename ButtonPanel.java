@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+
 public class ButtonPanel extends JPanel {
     private JButton spinButton = new JButton("spin");
     private JButton endTurnButton = new JButton("End turn");
@@ -11,7 +12,7 @@ public class ButtonPanel extends JPanel {
     private JButton careers = new JButton("Careers"); //will be used in release 2
     private JButton salaries = new JButton("Salary");
     private JButton houses = new JButton("Houses");
-
+    private boolean myTurn = true;
     private final Random rand = new Random();
     int upper = 6; //max number the spinner can generate
     int moves;
@@ -36,10 +37,24 @@ public class ButtonPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource().equals(spinButton)) {
-                moves = rand.nextInt(upper - 1) + 1; // +1 makes it so that player can not spin a value of 0
-                Board.movement(moves);
-                JOptionPane.showMessageDialog(null, "You spun a: " + moves);
+                if (myTurn == true) {
+                    moves = rand.nextInt(upper - 1) + 1; // +1 makes it so that player can not spin a value of 0
+                    Board.movement(moves);
+                    JOptionPane.showMessageDialog(null, "You spun a: " + moves);
+                    myTurn = false;
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Slow down! You have already spun this turn. Please finish any remaining actions and press end turn.");
+                }
             }
+
+            if (e.getSource().equals(endTurnButton)) {
+                JOptionPane.showMessageDialog(null, "Your turn has been ended, The next player may now move.");
+                myTurn = true;
+            }
+
+            
         }
     };
+
 }
