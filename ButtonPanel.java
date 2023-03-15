@@ -52,9 +52,21 @@ public class ButtonPanel extends JPanel {
                 JOptionPane.showMessageDialog(null, "Your turn has been ended, The next player may now move.");
                 myTurn = true;
             }
-
+            if (e.getSource().equals(careers)) {
+                JOptionPane.showMessageDialog(null,"This button is useless, carry on.");
+            }
+            if (e.getSource().equals(houses)) {
+                JOptionPane.showMessageDialog(null,"This button is useless, carry on.");
+            }
+            if (e.getSource().equals(salaries)) {
+                JOptionPane.showMessageDialog(null,"This button is useless, carry on.");
+            }
+            if (e.getSource().equals(buyStockButton)) {
+                JOptionPane.showMessageDialog(null,"This button is useless, carry on.");
+            }
             
         }
     };
 
 }
+
