@@ -5,7 +5,9 @@ import java.awt.event.KeyListener;
 public class GUI extends JFrame {
     public static void main (String[] args) {
         JFrame board = new JFrame("Game of Life");
-        int start = JOptionPane.showConfirmDialog(board, "Would you like to go to college?\n If not you'll start a career", null, JOptionPane.YES_NO_OPTION);
+        //int start = JOptionPane.showConfirmDialog(board, "Would you like to go to college?\n If not you'll start a career","Choose a starting path!",JOptionPane.YES_NO_OPTION);
+        Object[] options1 = { "College", "Career"};
+         int start = JOptionPane.showOptionDialog(board, "Would you like to go to college or start your career?","Choose a starting path!",JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options1, null);
         Board gameBoard = new Board(start);
         ActionPanel display = new ActionPanel();
         board.add(gameBoard);
