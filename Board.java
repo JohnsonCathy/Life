@@ -82,7 +82,10 @@ public class Board extends JPanel {
                         jLabelBoard[row][col].setText(str); //revert the tile back to what it said before
                     }
                     for (int i = 0; i < moves; i++)
-                        if ((col%2 != 0 || col==0) && row!=5) //if in even col or col zero and not at the turn point
+                        if(col == 5 && row == 5){
+                            JOptionPane.showInputDialog("Congrats you reached the end! Where would you like to retire?");
+                        }
+                        else if ((col%2 != 0 || col==0) && row!=5) //if in even col or col zero and not at the turn point
                             row++;
                         else if ((col%2 != 0 || col == 0) && row == 5) //if in even col or col zero and at the turn point
                             col++;
