@@ -85,6 +85,18 @@ public class Board extends JPanel {
                         if(col == 5 && row == 5){
                             JOptionPane.showInputDialog("Congrats you reached the end! Where would you like to retire?");
                         }
+                        else if(jLabelBoard[row][col].getText().equals("GetJob")){
+                            moves=0;
+                            JOptionPane.showMessageDialog(null,"Break out the resume, it's time to get a job!");
+                        }
+                        else if(jLabelBoard[row][col].getText().equals("Marry!")){
+                            moves=0;
+                            JOptionPane.showMessageDialog(null,"Do I hear wedding bells? Time to get married!");
+                        }
+                        else if(jLabelBoard[row][col].getText().equals("House!")){
+                            moves=0;
+                            JOptionPane.showMessageDialog(null,"Better get a UHaul, it's time to buy a house!");
+                        }
                         else if ((col%2 != 0 || col==0) && row!=5) //if in even col or col zero and not at the turn point
                             row++;
                         else if ((col%2 != 0 || col == 0) && row == 5) //if in even col or col zero and at the turn point
