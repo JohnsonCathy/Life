@@ -72,25 +72,21 @@ public class ButtonPanel extends JPanel {
                 player.setRounds(player.getRounds() + 1);
             }
             if (e.getSource().equals(careers)) {
-                Object[] options = { new JButton("one", careerCardIcon), new JButton("two", careerCardIcon), new JButton("three", careerCardIcon), new JButton("four", careerCardIcon), new JButton("five", careerCardIcon)};
+                Object[] options = {careerCardIcon, careerCardIcon, careerCardIcon, careerCardIcon, careerCardIcon};
                 int choice = JOptionPane.showOptionDialog(null, "Please draw a career card: ","Draw a card!",JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
             }
             if (e.getSource().equals(houses)) {
-                Object[] options = { new JButton("one", houseCardIcon), new JButton("two", houseCardIcon), new JButton("three", houseCardIcon), new JButton("four", houseCardIcon), new JButton("five", houseCardIcon)};
-                //JButton options1 = new JButton(houseCardIcon);
-                //JButton options2 = new JButton(houseCardIcon);
-                //Object[] options = {options1, options2};
-                houseCardIcon = new ImageIcon("src/house_card.png");
+                Object[] options = { houseCardIcon, houseCardIcon, houseCardIcon, houseCardIcon, houseCardIcon};
                 int choice = JOptionPane.showOptionDialog(null, "Please draw a house card: ","Draw a card!",JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
-               /* if(choice == JOptionPane.YES_OPTION || choice == JOptionPane.NO_OPTION || choice == JOptionPane.YES_NO_OPTION || choice == JOptionPane.CANCEL_OPTION){
+                if(choice == JOptionPane.YES_OPTION || choice == JOptionPane.NO_OPTION || choice == JOptionPane.YES_NO_OPTION || choice == JOptionPane.CANCEL_OPTION){
                     JOptionPane.showMessageDialog(null,"it works");
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"it kinda works");
-                }*/
+                }
             }
             if (e.getSource().equals(salaries)) {
-                Object[] options = { new JButton("one", salaryCardIcon), new JButton("two", salaryCardIcon), new JButton("three", salaryCardIcon), new JButton("four", salaryCardIcon), new JButton("five", salaryCardIcon)};
+                Object[] options = {salaryCardIcon, salaryCardIcon, salaryCardIcon, salaryCardIcon, salaryCardIcon};
                 int choice = JOptionPane.showOptionDialog(null, "Please draw a salary card: ","Draw a card!",JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
             }
             if (e.getSource().equals(buyStockButton)) {
