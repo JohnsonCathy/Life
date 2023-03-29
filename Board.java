@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Board extends JPanel {
     static JTextArea[][] jLabelBoard = new JTextArea[6][6];
-    
+    private boolean canDraw = false;
     /**
      * default constructor, sets board to size 6
      */
@@ -21,42 +21,42 @@ public class Board extends JPanel {
                     jLabelBoard[row][col].setBackground(new Color(211,211,211));
                 }
                 else if(start == JOptionPane.YES_OPTION && (row == 1 && col ==0)){
-                    jLabelBoard[row][col] = new JTextArea(" Life! \n Player");
+                    jLabelBoard[row][col]= new JTextArea(" Life! \n Player");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color (255,165,0));
                 }
                 else if(start == JOptionPane.NO_OPTION && (row == 0 && col ==1)){
-                    jLabelBoard[row][col] = new JTextArea("PayDay\nPlayer");
+                    jLabelBoard[row][col]= new JTextArea("PayDay\nPlayer");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color (0,255,0));
                 }
                 else if(row==5&&col==5){
-                    jLabelBoard[row][col] = new JTextArea("End");
+                    jLabelBoard[row][col]= new JTextArea("End");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color(211,211,211));
                 }
                 else if(row==5 && col==0){
-                    jLabelBoard[row][col] = new JTextArea("GetJob");
+                    jLabelBoard[row][col]= new JTextArea("GetJob");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color(255,0,0));
                 }
                 else if (row ==2 && col==2){
-                    jLabelBoard[row][col] = new JTextArea("Marry!");
+                    jLabelBoard[row][col]= new JTextArea("Marry!");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color(255,0,0));
                 }
                 else if(row ==3&&col==3){
-                    jLabelBoard[row][col] = new JTextArea("House!");
+                    jLabelBoard[row][col]= new JTextArea("House!");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color(255,0,0));
                 }
-                else if((row==0 && col==1)||(row==5 &&col==1)||(row==1&col==3)||(row==4&&col==4)||(row==2&&col==5)){
-                    jLabelBoard[row][col] = new JTextArea("PayDay");
+                else if((row==0 && col==1)||(row==5 &&col==1)||(row==1&&col==3)||(row==4&&col==4)||(row==2&&col==5)){
+                    jLabelBoard[row][col]= new JTextArea("PayDay");
                     jLabelBoard[row][col].setOpaque(true);
                     jLabelBoard[row][col].setBackground(new Color(0,255,0));
                 }
                 else {
-                    jLabelBoard[row][col] = new JTextArea(" Life!");
+                    jLabelBoard[row][col]= new JTextArea(" Life!");
                     jLabelBoard[row][col].setBackground(new Color (255,165,0));
                 }
                 jLabelBoard[row][col].setEditable(false);
@@ -86,16 +86,17 @@ public class Board extends JPanel {
                             JOptionPane.showInputDialog("Congrats you reached the end! Where would you like to retire?");
                         }
                         else if(jLabelBoard[row][col].getText().equals("GetJob")){
-                            moves=0;
                             JOptionPane.showMessageDialog(null,"Break out the resume, it's time to get a job!");
+                            col++;
                         }
                         else if(jLabelBoard[row][col].getText().equals("Marry!")){
-                            moves=0;
                             JOptionPane.showMessageDialog(null,"Do I hear wedding bells? Time to get married!");
+                            row--;
                         }
                         else if(jLabelBoard[row][col].getText().equals("House!")){
-                            moves=0;
                             JOptionPane.showMessageDialog(null,"Better get a UHaul, it's time to buy a house!");
+                            row++;
+
                         }
                         else if ((col%2 != 0 || col==0) && row!=5) //if in even col or col zero and not at the turn point
                             row++;
@@ -105,9 +106,6 @@ public class Board extends JPanel {
                             row--;
                         else if (col % 2 == 0 && row == 0) //if in an even col and at turn point
                             col++;
-                        if(col == 5 && row == 5){
-                            JOptionPane.showInputDialog("Congrats you reached the end! Where would you like to retire?");
-                        }
                     newStr = jLabelBoard[row][col].getText().concat("\n Player");
                     jLabelBoard[row][col].setText(newStr); //puts the player at that tile
                     break;
@@ -115,4 +113,8 @@ public class Board extends JPanel {
             }
         }
     }
+
+
+    public boolean getDraw () {return canDraw;}
+    public void setDraw () {canDraw = false;}
 }
