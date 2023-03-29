@@ -6,7 +6,7 @@ public class ActionPanel extends JPanel {
     private PlayerPanel playerInfo = new PlayerPanel();
 
     public ActionPanel() {
-        super();
+        super();//hey fuckers
         this.add(playerInfo);
         this.add(buttons);
         this.setLayout(new GridLayout(2,1));
