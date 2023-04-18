@@ -15,6 +15,7 @@ public class GUI extends JFrame {
         board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         board.setLayout(new GridLayout(1,2));
         board.pack();
+        board.setLocationRelativeTo(null);
         board.setVisible(true);
     }
 }
