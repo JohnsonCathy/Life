@@ -1,0 +1,61 @@
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class PlayerTest {
+    Player p1 = new Player();
+
+    @Test
+    public void testSetMoney1(){
+        p1.setMoney(10);
+        assertEquals(10, p1.getMoney());
+    }
+
+    @Test
+    public void testSetMoney2(){
+        p1.setMoney(-10);
+        assertEquals(-10, p1.getMoney());
+    }
+
+    @Test
+    public void testSetStock(){
+        p1.setStock();
+        assertTrue(p1.hasStock);
+    }
+
+    @Test
+    public void testSetCurrentPlayer(){
+        p1.setCurrentPlayer();
+        assertTrue(p1.isCurrentPlayer);
+    }
+
+    @Test
+    public void testSetRounds(){
+        p1.setRounds(2);
+        assertEquals(2, p1.getRounds());
+    }
+
+    @Test
+    public void testSetHouse(){
+        p1.setHouse("Test House");
+        assertEquals("Test House", p1.getHouse());
+    }
+
+    @Test
+    public void testSetSalary(){
+        p1.setSalary(100);
+        assertEquals(100, p1.getSalary());
+    }
+
+    @Test
+    public void testSetCareer(){
+        p1.setCareer("Tester");
+        assertEquals("Tester", p1.getCareer());
+    }
+
+    @Test
+    public void testOtherSetStock(){
+        p1.setStock(100);
+        assertEquals(100, p1.getStock());
+    }
+
+}
