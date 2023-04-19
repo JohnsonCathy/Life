@@ -9,28 +9,28 @@ public class ButtonPanel extends JPanel {
     public static JButton spinButton = new JButton();
     public static JButton endTurnButton = new JButton("End turn");
     public static JButton buyStockButton = new JButton();
-    public static JButton careers = new JButton(); //will be used in release 2
+    public static JButton careers = new JButton();
     public static JButton salaries = new JButton();
     public static JButton houses = new JButton();
     private boolean myTurn = true;
     private boolean haveSpun = false;
     private final Random rand = new Random();
-    int upper = 6; //max number the spinner can generate
+    int upper = 6; //max number the spinner can generate +1
     int moves;
     int card;
-    private ImageIcon houseCardIcon;
-    private ImageIcon salaryCardIcon;
-    private ImageIcon careerCardIcon;
-    private ImageIcon stockCardIcon;
-    private ImageIcon spinnerIcon;
+    private final ImageIcon houseCardIcon;
+    private final ImageIcon salaryCardIcon;
+    private final ImageIcon careerCardIcon;
+    private final ImageIcon stockCardIcon;
+    private final ImageIcon spinnerIcon;
     public static Player player = new Player();
 
     public ButtonPanel() {
-        houseCardIcon = new ImageIcon("src/house_card.png");
-        salaryCardIcon = new ImageIcon("src/salary_card.png");
-        careerCardIcon = new ImageIcon("src/career_card.png");
-        stockCardIcon = new ImageIcon("src/stock_card.png");
-        spinnerIcon = new ImageIcon("src/spinner.jpg");
+        houseCardIcon = new ImageIcon("src/icons/house_card.png");
+        salaryCardIcon = new ImageIcon("src/icons/salary_card.png");
+        careerCardIcon = new ImageIcon("src/icons/career_card.png");
+        stockCardIcon = new ImageIcon("src/icons/stock_card.png");
+        spinnerIcon = new ImageIcon("src/icons/spinner.jpg");
         ActionListener listener1 = new PlayerPanel();
 
         this.add(endTurnButton);
@@ -66,7 +66,7 @@ public class ButtonPanel extends JPanel {
     }
 
     /* Add all the different button actions here*/
-    private ActionListener listener = new ActionListener() {
+    private final ActionListener listener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource().equals(spinButton)) {
@@ -93,7 +93,7 @@ public class ButtonPanel extends JPanel {
             }
             if (e.getSource().equals(careers)) {
                 Object[] options = {careerCardIcon, careerCardIcon, careerCardIcon, careerCardIcon, careerCardIcon};
-                int choice = JOptionPane.showOptionDialog(null, "Please draw a career card: ", "Draw a card!", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
+                JOptionPane.showOptionDialog(null, "Please draw a career card: ", "Draw a card!", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
                 String[] careerOptions = {"Doctor", "Teacher", "Pilot", "Police Officer", "Salesman"};
                 card = rand.nextInt(upper - 1) + 1;
                 String pick = careerOptions[card];
@@ -146,7 +146,7 @@ public class ButtonPanel extends JPanel {
             if (e.getSource().equals(buyStockButton)) {
                 Object[] options = {1, 2, 3, 4, 5};
                 int choice = JOptionPane.showOptionDialog(null, "Please select the stock you want to buy: ", "Draw a card!", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
-                if(player.hasStock() == false) {
+                if(!player.hasStock()) {
                     if (choice == 0) {
                         int pick = 1;
                         player.setStock(pick);
@@ -173,11 +173,10 @@ public class ButtonPanel extends JPanel {
                         player.setStock();
                     }
                 }
-                    else if(player.hasStock() == true) {
+                else if(player.hasStock()) {
                     JOptionPane.showMessageDialog(null, "Hang on captain wall street, you already have a stock! You can only have one stock at a time please finish other actions then end your turn.");
                 }
             }
         }
     };
-
 }
