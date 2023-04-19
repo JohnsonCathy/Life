@@ -5,68 +5,58 @@ import java.awt.*;
 public class Board extends JPanel {
     static JTextArea[][] jLabelBoard = new JTextArea[6][9];
 
-    public Board(int start, int start2) {
-        for (int row = 0; row < 6; row ++) {
-            for (int col = 0; col < 9; col ++) {
+    public Board(int start) {
+        for (int row = 0; row < 6; row++) {
+            for (int col = 0; col < 9; col++) {
                 this.setLayout(new GridLayout(6, 9));
-                if(row==0 && col==0) {
+                if (row == 0 && col == 0) {
                     jLabelBoard[row][col] = new JTextArea("Start");
                     jLabelBoard[row][col].setOpaque(true);
-                    jLabelBoard[row][col].setBackground(new Color(0,255,255));
-                }
-                else if((start == JOptionPane.YES_OPTION || start2 == JOptionPane.YES_OPTION) && (row == 1 && col ==0)){
-                    jLabelBoard[row][col]= new JTextArea(" Life! \n Player");
+                    jLabelBoard[row][col].setBackground(new Color(0, 255, 255));
+                } else if ((start == JOptionPane.YES_OPTION) && (row == 1 && col == 0)) {
+                    jLabelBoard[row][col] = new JTextArea(" Life! \nPlayer \nOther!");
                     jLabelBoard[row][col].setOpaque(true);
-                    jLabelBoard[row][col].setBackground(new Color (255,165,0));
-                }
-                else if((start == JOptionPane.NO_OPTION || start2 == JOptionPane.NO_OPTION) && (row == 5 && col ==1)){
-                    jLabelBoard[row][col]= new JTextArea("PayDay\nPlayer");
+                    jLabelBoard[row][col].setBackground(new Color(255, 165, 0));
+                } else if ((start == JOptionPane.NO_OPTION) && (row == 5 && col == 1)) {
+                    jLabelBoard[row][col] = new JTextArea("PayDay\nPlayer\n Other!");
                     jLabelBoard[row][col].setOpaque(true);
-                    jLabelBoard[row][col].setBackground(new Color (0,255,0));
-                }
-                else if(row==5&&col==8){
-                    jLabelBoard[row][col]= new JTextArea("End");
+                    jLabelBoard[row][col].setBackground(new Color(0, 255, 0));
+                } else if (row == 5 && col == 8) {
+                    jLabelBoard[row][col] = new JTextArea("End");
                     jLabelBoard[row][col].setOpaque(true);
-                    jLabelBoard[row][col].setBackground(new Color(0,255,255));
-                }
-                else if((row==0 || row==1 || row ==2 || row==3 || row==4) && (col==1||col==5)){
-                    jLabelBoard[row][col]= new JTextArea("landscape.exe");
+                    jLabelBoard[row][col].setBackground(new Color(0, 255, 255));
+                } else if ((row == 0 || row == 1 || row == 2 || row == 3 || row == 4) && (col == 1 || col == 5)) {
+                    jLabelBoard[row][col] = new JTextArea("landscape.exe");
                     jLabelBoard[row][col].setOpaque(true);
-                    jLabelBoard[row][col].setBackground(new Color(0,100,0));
-                    jLabelBoard[row][col].setForeground(new Color(0,120,0));
-                }
-                else if((row==1 || row==2 || row ==3 || row==4 || row==5) && (col==7 || col ==3)){
-                    jLabelBoard[row][col]= new JTextArea("landscape.exe");
+                    jLabelBoard[row][col].setBackground(new Color(0, 100, 0));
+                    jLabelBoard[row][col].setForeground(new Color(0, 120, 0));
+                } else if ((row == 1 || row == 2 || row == 3 || row == 4 || row == 5) && (col == 7 || col == 3)) {
+                    jLabelBoard[row][col] = new JTextArea("landscape.exe");
                     jLabelBoard[row][col].setOpaque(true);
-                    jLabelBoard[row][col].setBackground(new Color(0,100,0));
-                    jLabelBoard[row][col].setForeground(new Color(0,120,0));
-                }
-                else if(row==5 && col==0){
-                    jLabelBoard[row][col]= new JTextArea("GetJob");
+                    jLabelBoard[row][col].setBackground(new Color(0, 100, 0));
+                    jLabelBoard[row][col].setForeground(new Color(0, 120, 0));
+                } else if (row == 5 && col == 0) {
+                    jLabelBoard[row][col] = new JTextArea("GetJob");
                     jLabelBoard[row][col].setOpaque(true);
-                    jLabelBoard[row][col].setBackground(new Color(255,0,0));
+                    jLabelBoard[row][col].setBackground(new Color(255, 0, 0));
                     jLabelBoard[row][col].setForeground(Color.black);
-                }
-                else if (row ==2 && col==2){
-                    jLabelBoard[row][col]= new JTextArea("Marry!");
+                } else if (row == 2 && col == 2) {
+                    jLabelBoard[row][col] = new JTextArea("Marry!");
                     jLabelBoard[row][col].setOpaque(true);
-                    jLabelBoard[row][col].setBackground(new Color(255,0,0));
+                    jLabelBoard[row][col].setBackground(new Color(255, 0, 0));
                     jLabelBoard[row][col].setForeground(Color.black);
-                }
-                else if(row ==3&&col==4){
-                    jLabelBoard[row][col]= new JTextArea("House!");
+                } else if (row == 3 && col == 4) {
+                    jLabelBoard[row][col] = new JTextArea("House!");
                     jLabelBoard[row][col].setOpaque(true);
-                    jLabelBoard[row][col].setBackground(new Color(255,0,0));
+                    jLabelBoard[row][col].setBackground(new Color(255, 0, 0));
                     jLabelBoard[row][col].setForeground(Color.black);
-                }
-                else if((row==0 && col==1)||(row==5 &&col==1)||(row==1&&col==3)||(row==4&&col==4)||(row==2&&col==5)){
-                    jLabelBoard[row][col]= new JTextArea("PayDay");
+                } else if ((row == 0 && col == 2) || (row == 5 && col == 1) || (row == 2 && col == 6) || (row == 4 && col == 4) || (row == 1 && col == 8)) {
+                    jLabelBoard[row][col] = new JTextArea("PayDay");
                     jLabelBoard[row][col].setOpaque(true);
-                    jLabelBoard[row][col].setBackground(new Color(0,255,0));
-                }
-                else {
-                    jLabelBoard[row][col]= new JTextArea(" Life!");
-                    jLabelBoard[row][col].setBackground(new Color (255,165,0));
+                    jLabelBoard[row][col].setBackground(new Color(0, 255, 0));
+                } else {
+                    jLabelBoard[row][col] = new JTextArea(" Life!");
+                    jLabelBoard[row][col].setBackground(new Color(255, 165, 0));
                 }
                 jLabelBoard[row][col].setEditable(false);
                 jLabelBoard[row][col].setOpaque(true);
@@ -83,16 +73,19 @@ public class Board extends JPanel {
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 9; col++) {
                 if (jLabelBoard[row][col].getText().contains("Player")) { //if the player is in this tile
-                    if(jLabelBoard[row][col].getText().equals("Player")){ // if the tile *only* says player
-                        jLabelBoard[row][col].setText("");
-                    }
-                    else { //if tile says something + player
                         str = jLabelBoard[row][col].getText().substring(0, 6);
                         jLabelBoard[row][col].setText(str); //revert the tile back to what it said before
+                    for(int r = 0; r<6; r++){
+                        for(int c=0; c<9; c++){
+                            if(jLabelBoard[r][c].getText().contains("Other!")) {
+                                str = jLabelBoard[r][c].getText().substring(0, 6);
+                                jLabelBoard[r][c].setText(str); //revert the tile back to what it said before
+                            }
+                        }
                     }
                     for (int i = 0; i < moves; i++)
                         if(col == 8 && row == 5){
-                            JOptionPane.showInputDialog("Congrats you reached the end! Where would you like to retire?");
+                            JOptionPane.showMessageDialog(null, "Congrats you reached the end! Welcome to retirement");
                         }
                         else if(jLabelBoard[row][col].getText().equals("GetJob")){
                             JOptionPane.showMessageDialog(null,"Break out the resume, it's time to get a job!");
@@ -120,10 +113,11 @@ public class Board extends JPanel {
                         }
                     newStr = jLabelBoard[row][col].getText().concat("\n Player");
                     jLabelBoard[row][col].setText(newStr); //puts the player at that tile
+                    newStr = jLabelBoard[row-1][col].getText().concat("\n Other!");
+                    jLabelBoard[row-1][col].setText(newStr);
                     break;
                 }
             }
         }
     }
-
 }
