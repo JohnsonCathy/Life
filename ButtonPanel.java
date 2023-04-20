@@ -87,6 +87,7 @@ public class ButtonPanel extends JPanel {
                     myTurn = true;
                     haveSpun = false;
                     player.hasStock = false;
+                    JOptionPane.showMessageDialog(null,"Player 2 has completed their turn");
                 } else {
                     JOptionPane.showMessageDialog(null, "Slow down! You have not spun this turn. Please finish any remaining actions and press spin.");
                 }
