@@ -57,5 +57,17 @@ public class PlayerTest {
         p1.setStock(100);
         assertEquals(100, p1.getStock());
     }
+    
+    @Test
+    public void testIsCurrentPlayer(){
+        p1.setCurrentPlayer();
+        assertTrue(p1.isCurrentPlayer());
+    }
+
+    @Test
+    public void testHasStock(){
+        p1.setStock();
+        assertTrue(p1.hasStock());
+    }
 
 }
