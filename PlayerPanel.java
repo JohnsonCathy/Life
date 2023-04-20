@@ -102,6 +102,16 @@ public class PlayerPanel extends JPanel implements ActionListener {
             whoTurn = playerOne.isCurrentPlayer;
             if (!whoTurn) {
                 currentTurn.setText("Go player one!");
+                if(!playerOne.getCareer().equals("Bum")){
+                    career2.setText("Programmer");
+                }
+                if(!playerOne.getHouse().equals("Hobo")){
+                    house2.setText("Condo");
+                }
+                if(playerOne.getSalary() != 0){
+                    salary2.setText("50000");
+                    money2.setText("60000");
+                }
             } else{
                 currentTurn.setText("Go player two!");
             }
